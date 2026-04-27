@@ -8,7 +8,7 @@ A high-performance personal portfolio crafted with React, Vite, and Tailwind CSS
 ![Interface Preview 2](public/interface_2.png)
 
 ## Live Demo
-[https://phatpham.id.vn/]()
+[https://phatpham.id.vn/](https://phatpham.id.vn/)
 
 ---
 *Developed by Salt.*
