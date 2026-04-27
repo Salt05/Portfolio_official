@@ -43,6 +43,7 @@ body::-webkit-scrollbar {
 }
 
 @media (hover: hover) and (pointer: fine) {
+
   html,
   body,
   * {

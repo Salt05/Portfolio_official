@@ -25,6 +25,7 @@ const MAGNET_CONFIGS = [
 export function Hero({ activeLanternIndex = 0, onLanternSelect }: HeroProps) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll();
+  const smoothScrollProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const shape1Ref = useRef<HTMLDivElement>(null);
   const shape2Ref = useRef<HTMLDivElement>(null);
   const shape3Ref = useRef<HTMLDivElement>(null);
@@ -253,23 +254,23 @@ export function Hero({ activeLanternIndex = 0, onLanternSelect }: HeroProps) {
   };
 
   // Star animations (0 to 0.13 global scroll progress)
-  const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
   
   // Distance down: star starts at ~80vh. Intro text is vertically centered in the next 100vh section,
   // but there is a 67vh "Rest1" border between Hero and Intro.
   // Top of Intro = 100vh (Hero) + 67vh (Rest) = 167vh.
   // Text is at roughly 167vh + 30vh = 197vh.
   // To move from 80vh to ~190vh (just above the text), it needs to translate down by ~110vh = 1.1 * vh.
-  const starY = useTransform(scrollYProgress, [0, 0.13], [0, vh * 1.1], { ease: easeOutCubic });
+  const starY = useTransform(smoothScrollProgress, [0, 0.13], [0, vh * 1.1]);
   
   // Star starts at 18vw. Text is at max(0, (vw - 1024)/2) + padding. 
   // Let's translate it to around the center-left.
   const maxW = 1024;
   const targetX = vw > maxW ? (vw - maxW) / 2 : vw < 768 ? 24 : 64; // padding md:px-16 is 64px
   const startX = vw * 0.18;
-  const starX = useTransform(scrollYProgress, [0, 0.13], [0, targetX - startX - 20], { ease: easeOutCubic }); // slightly left and above text
+  const starX = useTransform(smoothScrollProgress, [0, 0.13], [0, targetX - startX - 20]); // slightly left and above text
   
-  const starRotate = useTransform(scrollYProgress, [0, 0.13], [0, 260], { ease: easeOutCubic });
+  const starRotate = useTransform(smoothScrollProgress, [0, 0.13], [0, 260]);
 
   const shape2BaseY = useTransform(p, [0, 1], [0, -150]);
   const shape2Y = useTransform([shape2BaseY, shape2MagnetYSmooth], ([base, offset]) => base + offset);
@@ -408,17 +409,17 @@ export function Hero({ activeLanternIndex = 0, onLanternSelect }: HeroProps) {
             }`}
           >
             <defs>
-              <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="triGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#ddd6fe" stopOpacity="0.8" />
                 <stop offset="100%" stopColor="#fae8ff" stopOpacity="0.6" />
               </linearGradient>
             </defs>
             <path
-              fill="url(#starGrad)"
-              stroke="url(#starGrad)"
+              fill="url(#triGrad)"
+              stroke="url(#triGrad)"
               strokeWidth="8"
               strokeLinejoin="round"
-              d="M50 10 l10.5 25.5 l27.5 1.7 l-21.1 18.1 l6.4 26.5 l-23.3 -14.8 l-23.3 14.8 l6.4 -26.5 l-21.1 -18.1 l27.5 -1.7 Z"
+              d="M50 15 L88 82 L12 82 Z"
             />
           </svg>
         </motion.div>

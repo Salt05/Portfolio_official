@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
-export function CursorDot() {
+export function CursorDot({ isNightMode }: { isNightMode?: boolean }) {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const springX = useSpring(x, { stiffness: 220, damping: 24, mass: 0.35 });
@@ -45,14 +45,18 @@ export function CursorDot() {
         animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
         transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
         style={{ x, y }}
-        className="pointer-events-none fixed top-0 left-0 z-[71] w-7 h-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white mix-blend-difference"
+        className={`pointer-events-none fixed top-0 left-0 z-[71] w-7 h-7 -translate-x-1/2 -translate-y-1/2 rounded-full border transition-colors duration-1000 ${
+          isNightMode ? "border-rose-200/30" : "border-stone-800/30"
+        }`}
       />
       <motion.div
         aria-hidden="true"
         animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.7 }}
         transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
         style={{ x: springX, y: springY }}
-        className="pointer-events-none fixed top-0 left-0 z-[70] w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white mix-blend-difference"
+        className={`pointer-events-none fixed top-0 left-0 z-[70] w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full transition-colors duration-1000 ${
+          isNightMode ? "bg-rose-100 shadow-[0_0_10px_rgba(254,226,226,0.5)]" : "bg-stone-800 shadow-[0_0_10px_rgba(41,37,36,0.2)]"
+        }`}
       />
     </>
   );

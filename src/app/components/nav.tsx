@@ -34,11 +34,10 @@ export function Nav({ isNightMode, onToggleNightMode }: NavProps) {
     <>
       <motion.div
         style={{ width }}
-        className={`fixed top-0 left-0 h-[3px] z-50 ${
-          isNightMode
+        className={`fixed top-0 left-0 h-[3px] z-50 ${isNightMode
             ? "bg-gradient-to-r from-sky-300 via-violet-300 to-rose-300 shadow-[0_0_14px_rgba(191,219,254,0.6)]"
             : "bg-gradient-to-r from-rose-500 via-fuchsia-500 to-blue-500 shadow-[0_0_12px_rgba(236,72,153,0.35)]"
-        }`}
+          }`}
       />
       <motion.header
         animate={{ y: isNavHidden ? -96 : 0, opacity: isNavHidden ? 0 : 1 }}
@@ -62,7 +61,7 @@ export function Nav({ isNightMode, onToggleNightMode }: NavProps) {
 
       <motion.button
         initial={{ opacity: 0 }}
-        animate={{ 
+        animate={{
           opacity: isNavHidden ? 0 : 1,
           pointerEvents: isNavHidden ? "none" : "auto"
         }}
@@ -71,27 +70,24 @@ export function Nav({ isNightMode, onToggleNightMode }: NavProps) {
         onClick={onToggleNightMode}
         aria-label={isNightMode ? "Switch to day mode" : "Switch to night mode"}
         title={isNightMode ? "Day mode" : "Night mode"}
-        className={`fixed bottom-8 left-6 md:left-16 z-50 h-12 w-12 rounded-xl border backdrop-blur transition-all duration-300 ${
-          isNightMode
+        className={`fixed bottom-8 left-6 md:left-16 z-50 h-12 w-12 rounded-xl border backdrop-blur transition-all duration-500 ${isNightMode
             ? "border-rose-200/40 bg-slate-900/50 shadow-[0_0_20px_rgba(255,207,145,0.25)]"
             : "border-stone-300/75 bg-white/55 hover:border-rose-500/45 shadow-lg"
-        }`}
+          }`}
       >
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-300 ${
-            isNightMode
+          className={`pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-500 ${isNightMode
               ? "opacity-100 bg-[radial-gradient(circle_at_50%_55%,rgba(255,222,157,0.25)_0%,rgba(255,222,157,0.1)_48%,transparent_76%)]"
               : "opacity-0"
-          }`}
+            }`}
         />
         <img
           src={isNightMode ? lanternNight : lanternDay}
           alt=""
           aria-hidden="true"
-          className={`relative z-10 h-full w-full object-contain p-1.5 transition-all duration-300 ${
-            isNightMode ? "drop-shadow-[0_0_12px_rgba(255,226,170,0.55)]" : ""
-          }`}
+          className={`relative z-10 h-full w-full object-contain p-1.5 transition-all duration-500 ${isNightMode ? "drop-shadow-[0_0_12px_rgba(255,226,170,0.55)]" : ""
+            }`}
         />
       </motion.button>
     </>

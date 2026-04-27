@@ -69,7 +69,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 2.0, ease: [0.22, 1, 0.36, 1] }}
           className="pointer-events-none fixed inset-0 -z-6"
           style={{ backgroundImage: activeGradient }}
         />
@@ -83,7 +83,7 @@ export default function App() {
       <SunsetOrbs />
       <Atmosphere />
       <GrainOverlay />
-      <CursorDot />
+      <CursorDot isNightMode={isNightMode} />
       <Nav isNightMode={isNightMode} onToggleNightMode={() => setIsNightMode((prev) => !prev)} />
 
       <main className="relative">
