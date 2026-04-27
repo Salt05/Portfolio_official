@@ -1,0 +1,98 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide the page scrollbar while keeping scroll functionality. */
+html,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  * {
+    cursor: none !important;
+  }
+}
+
+[data-theme="night"] {
+  color-scheme: dark;
+}
+
+[data-theme="night"] [class*="text-stone-900"],
+[data-theme="night"] [class*="text-stone-800"],
+[data-theme="night"] [class*="text-stone-700"],
+[data-theme="night"] [class*="text-stone-600"],
+[data-theme="night"] [class*="text-stone-500"],
+[data-theme="night"] [class*="text-black"] {
+  color: #f6f8ff !important;
+}
+
+[data-theme="night"] [class*="text-stone-400"],
+[data-theme="night"] [class*="text-stone-300"],
+[data-theme="night"] [class*="text-stone-200"] {
+  color: #ccd4ea !important;
+}
+
+[data-theme="night"] [class*="text-rose-"],
+[data-theme="night"] [class*="text-violet-"],
+[data-theme="night"] [class*="text-sky-"],
+[data-theme="night"] [class*="text-amber-"],
+[data-theme="night"] [class*="text-orange-"],
+[data-theme="night"] [class*="text-blue-"] {
+  filter: saturate(1.1) brightness(1.18);
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.18),
+    0 0 18px rgba(176, 206, 255, 0.24);
+}
+
+[data-theme="night"] [class*="bg-white"] {
+  background-color: rgba(26, 32, 52, 0.45) !important;
+}
+
+[data-theme="night"] [class*="border-white"] {
+  border-color: rgba(199, 212, 255, 0.26) !important;
+}
+
+[data-theme="night"] [class*="bg-stone-800"] {
+  background-color: rgba(228, 236, 255, 0.16) !important;
+}
+
+[data-theme="night"] [class*="hover:bg-stone-900"]:hover {
+  background-color: rgba(228, 236, 255, 0.24) !important;
+}
