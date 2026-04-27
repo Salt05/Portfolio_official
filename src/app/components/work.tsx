@@ -41,7 +41,7 @@ const projects: Project[] = [
     tags: ["Unity", "C#", "Procedural Generation", "Firebase"],
     accent: "from-sky-200 to-violet-200",
     shape: "square",
-    imageLink: "/Game/Apply%20Neumorphism%20Style/dist/index.html",
+    imageLink: "/game-neumorphism/",
     caseStudyLink: "https://github.com/Salt05/NumStrata",
   },
 ];
